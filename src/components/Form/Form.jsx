@@ -63,7 +63,7 @@ const Form = () => {
           db.items.map(field => {
             return (
               <div key={field.name} className="input" >
-                {field.type !== "submit" ? <label key={field.label} htmlFor={field.name}>{field.label}</label> : null}
+                {field.type !== "submit" ? <label key={field.label} htmlFor={field.name}>{field.label}: </label> : null}
 
                 {
                   field.type !== "select" ?

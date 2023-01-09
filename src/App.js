@@ -5,7 +5,7 @@ import Container from "./components/Container/Container"
 function App() {
   return (
     <>
-      {/* <Form /> */}
+      <Form />
       <Container />
     </>
   );

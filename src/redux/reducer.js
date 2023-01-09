@@ -1,7 +1,7 @@
-import { ERROR, GET_RESPONSES } from "./actions"
+import { ERROR, PUSH_RESPONSE } from "./actions"
 
 const initialState = {
-    responses: undefined,
+    responses: [],
     errors: {}
 }
 
@@ -9,10 +9,10 @@ export default function reducer(state = initialState, action) {
 
     switch (action.type) {
 
-        case GET_RESPONSES:
+        case PUSH_RESPONSE:
             return {
                 ...state,
-                responses: action.payload
+                responses: state.responses.filter(r => r.id === action.payload.id).length === 0 ? [...state.responses || [], action.payload] : [...state.responses || []]
             }
 
         case ERROR:
