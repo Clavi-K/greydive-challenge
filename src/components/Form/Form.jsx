@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addResponse } from '../../redux/actions'
+import { useNavigate } from "react-router-dom"
+import Swal from "sweetalert2/dist/sweetalert2.all.min.js";
 import db from "../../db.json"
 
 const Form = () => {
 
   const dispatch = useDispatch()
-  const errors = useSelector(state => state.errors)
+  const navigate = useNavigate()
 
+  const errors = useSelector(state => state.errors)
   const [values, setValues] = useState({})
 
   const onSubmit = e => {
@@ -28,6 +31,19 @@ const Form = () => {
       el.type === "checkbox" ? el.checked = false : el.value = ""
     }
 
+    if (!errors.addResponse) {
+      Swal.fire({
+        title: 'Reponse sent successfully',
+        icon: "success",
+        iconColor: "#497aa6",
+        showCloseButton: true,
+        confirmButtonText: "See responses",
+        allowEnterKey: false,
+      })
+        .then(result => {
+          if (result.isConfirmed) navigate("responses") 
+        })
+    }
 
   }
 
