@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getResponses } from '../../redux/actions'
-
 const Container = () => {
 
     const dispatch = useDispatch()

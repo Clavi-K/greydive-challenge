@@ -12,7 +12,7 @@ export default function reducer(state = initialState, action) {
         case PUSH_RESPONSE:
             return {
                 ...state,
-                responses: state.responses.filter(r => r.id === action.payload.id).length === 0 ? [...state.responses || [], action.payload] : [...state.responses || []]
+                responses: state.responses.filter(r => r.id === action.payload.id).length === 0 ? [...state.responses, action.payload] : state.responses
             }
 
         case ERROR:
