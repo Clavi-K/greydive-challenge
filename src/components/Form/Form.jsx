@@ -9,7 +9,6 @@ const Form = () => {
   const errors = useSelector(state => state.errors)
 
   const [values, setValues] = useState({})
-  const [sent, setSent] = useState(false)
 
   const onSubmit = e => {
     e.preventDefault()
@@ -29,7 +28,6 @@ const Form = () => {
       el.type === "checkbox" ? el.checked = false : el.value = ""
     }
 
-    setSent(true)
 
   }
 
@@ -88,12 +86,6 @@ const Form = () => {
 
           : null}
       </form>
-
-      {sent && !errors.addResponse ?
-        <p>Form filled successfully! <a href="/test">Go to the responses</a></p>
-        : null}
-
-        <p className='text-3xl font-bold underline'>uwu</p>
 
     </div>
   )
