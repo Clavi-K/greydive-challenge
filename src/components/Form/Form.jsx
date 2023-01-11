@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom"
 import Swal from "sweetalert2/dist/sweetalert2.all.min.js";
 import db from "../../db.json"
 
+import s from "./style.module.css"
+
 const Form = () => {
 
   const dispatch = useDispatch()
@@ -35,13 +37,19 @@ const Form = () => {
       Swal.fire({
         title: 'Reponse sent successfully',
         icon: "success",
-        iconColor: "#497aa6",
+        iconColor: "#139397",
         showCloseButton: true,
         confirmButtonText: "See responses",
         allowEnterKey: false,
+        customClass: {
+          popup: `${s.alert}`,
+          closeButton: `${s.closeButton}`,
+          confirmButton: `${s.confirmButton}`,
+          denyButton: `${s.denyButton}`,
+        }
       })
         .then(result => {
-          if (result.isConfirmed) navigate("responses") 
+          if (result.isConfirmed) navigate("responses")
         })
     }
 
@@ -70,18 +78,21 @@ const Form = () => {
 
   return (
     <div>
-      <form onSubmit={onSubmit}>
+
+      <h1 className={`${s.title}`}>¡Super Challenge Greydive Form!</h1>
+
+      <form onSubmit={onSubmit} className={`${s.form}`}>
 
         {db ?
 
           db.items.map(field => {
             return (
-              <div key={field.name} className="input" >
-                {field.type !== "submit" ? <label key={field.label} htmlFor={field.name}>{field.label}: </label> : null}
+              <div key={field.name} className={field.type === "checkbox" ? `${s.checkboxDiv} ${s.divInput}` : `${s.divInput}`} >
+                {field.type !== "submit" ? <label className={`${s.label}`} key={field.label} htmlFor={field.name}>{field.label}: </label> : null}
 
                 {
                   field.type !== "select" ?
-                    <input key={field.name} type={field.type} name={field.name} required onChange={changeHandler} />
+                    <input className={field.type === "submit" ? `${s.submit} ${s.input}` : `${s.input}`} key={field.name} type={field.type} name={field.name} required onChange={changeHandler} />
 
                     :
 

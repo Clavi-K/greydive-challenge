@@ -1,4 +1,3 @@
-import './App.css';
 import Form from "./components/Form/Form"
 import Container from "./components/Container/Container"
 import { Routes, Route } from "react-router-dom"

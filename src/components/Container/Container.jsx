@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getResponses } from '../../redux/actions'
+
+import s from "./style.module.css"
+
 const Container = () => {
 
     const dispatch = useDispatch()
@@ -13,18 +16,24 @@ const Container = () => {
 
     return (
         <>
-            <div className="reponsesContainer">
+
+            <h1 className={`${s.title}`}>Total responses: </h1>
+
+            <div className={`${s.reponsesContainer}`}>
                 {
                     responses.length ?
 
                         responses.map(r => {
                             return (
-                                <div className="response">
+                                <div className={`${s.response}`}>
 
                                     {r.data.map(prop => {
 
                                         return (
-                                            prop.label !== "Terms and conditions" ? <p>{prop.label}: {prop.value}</p> : <p>{prop.label}: {prop.value.checked.toString()}</p>
+                                            <div className={`${s.field}`}>
+                                                {<p>{prop.label}:</p>}
+                                                <p className={`${s.value}`}>{prop.label !== "Terms and conditions" ? prop.value : prop.value.checked.toString()}</p>
+                                            </div>
                                         )
 
                                     })}
