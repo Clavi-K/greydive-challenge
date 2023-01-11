@@ -1,13 +1,15 @@
 import {initializeApp} from "firebase/app"
 import { getFirestore } from "firebase/firestore"
 
+console.log(process.env.REACT_APP_APIKEY)
+
 const firebaseConfig = {
-    apiKey: "AIzaSyBHfAXSh682SUqMTH5SWOmlOHQyW_QEXMo",
-    authDomain: "greydive-challenge-33ec7.firebaseapp.com",
-    projectId: "greydive-challenge-33ec7",
-    storageBucket: "greydive-challenge-33ec7.appspot.com",
-    messagingSenderId: "600666961059",
-    appId: "1:600666961059:web:728bd27b6686329b67fb16"
+    apiKey: process.env.REACT_APP_APIKEY,
+    authDomain: process.env.REACT_APP_AUTHDOMAIN,
+    projectId: process.env.REACT_APP_PROJECTID,
+    storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
+    appId: process.env.REACT_APP_APPID
 }
 
 const app = initializeApp(firebaseConfig)
